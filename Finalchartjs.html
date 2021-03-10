@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chart.js demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+
+<canvas id="myChart" width="800" height="200"></canvas>
+<script>
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Beginning - 1/4', 'Middle - 2/4 ', 'Near the end - 3/4', 'The End - 4/4'],
+        datasets: [{
+            label: 'Number of times I got lost in class today',
+            data: [6, 4, 3, 5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+  options: {
+    
+    legend: {
+      display: true,
+      position: 'bottom',
+      labels: { 
+        fontColor: "#000080",
+      }
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+function myFunction() {
+  var x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+</script>
+<div class="container">
+  <form action="action_page.php">
+<h2> Were you also lost in class? Or see something in this graph that could use improvement? dont hesitate to reach out!</h2>
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" onchange='myFunction()' name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" onchange='myFunction()' name="lastname" placeholder="Your last name..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <!--<input type="submit" value="Submit">-->
+
+  </form>
+</div>
+<h3>When you leave the input field, a function is triggered which transforms the input text to upper case.</h3>
+<h3> I can only get it to work on the first name section and I havent figured out how to allow the text fields to be submitted. Everytime i try it draws an error. </h3>
+<h3>I have removed the submit button because of this.</h3>
+
