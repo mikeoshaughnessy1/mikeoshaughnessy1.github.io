@@ -7,16 +7,18 @@
 <body>
 
 
-    <h1>Chart.js Sample</h1>
+    <h1>Mikes 1st graph</h1>
 
-    <canvas id="countries" width="600" height="400"></canvas>
+    <canvas id="countries" width="1000" height="800"></canvas>
     <script>
         var pieData = [
+
             {
                 value: 20,
                 color:"#878BB6"
             },
             {
+                label : "todd"
                 value : 40,
                 color : "#4ACAB4"
             },
@@ -30,11 +32,13 @@
             }
         ];    
 
-    options: {
+    options: { 
+
         scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero: true
+
                 }
             }]
         }

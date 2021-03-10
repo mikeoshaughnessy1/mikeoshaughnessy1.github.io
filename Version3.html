@@ -3,26 +3,22 @@
     <meta charset="utf-8"/>
     <title>Chart.js demo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
-
-
-
-
 </head>
 <body>
 
 
-    <h1>Chart.js Sample</h1>
+    <h1>Mikes 1st graph</h1>
 
-    <canvas id="countries" width="600" height="400"></canvas>
+    <canvas id="countries" width="1000" height="800"></canvas>
     <script>
-        var pieData = [
-            {
+        var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
                 value: 20,
                 color:"#878BB6"
             },
             {
+                label : "todd"
                 value : 40,
                 color : "#4ACAB4"
             },
@@ -34,7 +30,10 @@
                 value : 30,
                 color : "#FFEA88"
             }
-        ];
+    options: options
+        });   
+
+
         // Get the context of the canvas element we want to select
         var countries= document.getElementById("countries").getContext("2d");
         new Chart(countries).Pie(pieData);
