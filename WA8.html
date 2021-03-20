@@ -1,0 +1,112 @@
+<html><head>
+    <meta charset="utf-8">
+    <title>Weekly Assignment #8</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+
+
+<style type="text/css">
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+</style>
+<body>
+
+<div style='text-align: left;'>
+  <h2>PYTHON CODE  -  <a href="https://github.com/mikeoshaughnessy1/mikeoshaughnessy1.github.io/blob/master/starter_code_wa_8.ipynb">LINK</a></h2> 
+
+     <h2> 
+
+    MY GITHUB PORTFOLIO  -   <a href="https://mikeoshaughnessy1.github.io/homepage1">LINK</a>
+  </h2>
+		<h2>Step One </h2>
+		<p> In order to begin this assignment I uploaded the starter code to jupyter notebooks in order to perform some aggregation and filtering of the policing data. In order to curate the data I was looking for of percentage of arrests for either vehicular or pedestrian types of police interactions. For the code what I did was loaded in the csv file, then what i did was group all elements in each arrest file with the "type" statistic that carried either "vehicular" or "pedestrian" information. For each 'type' registered in a dictionary I iterated through all of the records looking to see if each had an 'arrest_made': 'TRUE' and if so i added it to a counter for that 'type'. Lastly I was able to determine percentages by computing percentage number of arrests in each 'type' over the total number of interactions of that 'type'. I was able to export the data as a json file by running a json.dump outfile line of code- this allowed me to continue to step 2</p>
+
+		 
+
+		<!-- The submission (1) computes a statistic using filtering and aggregation (2) links to the code and (3) explains the code -->
+	
+		<h2>Step Two </h2>
+		<p> For this step of the assignment what I did was use sublime to create a chartjs graph detailing how denver police interaction types and their probability of being arrested. I exported the data from anaconda using a data.json as a outfile in order to plug it into sublime. </p>
+
+
+		<h3>Arrest Probability Per Denver Police Interaction Type - Vehicular and Pedestrian. </h3><!-- insert chart here -->
+		<canvas id="myChart" width="1400" height="300" class="chartjs-render-monitor"
+		style="display: block; height: 245px; width: 980px;"
+		>
+		
+		</canvas>
+
+		<!-- The submission successfully makes and presents a polished chart based on the statistic. The axis are appropriately scaled, there is a legend if appropriate, the chart has a title, etc. -->
+
+		<h2>Step Three </h2>
+		<p> This was an interesting activity. It was interesting to analyze policing data in terms of their types of interactions with citizens and criminals. From my investigation i learned that for our denver policing data the percentage of police arrests involving pedestrians is upwards of 18% whereas percentage of police arrests involving vehicles is down at 14%. The total number of police interactions for these two types were (pedestrian:373 vehicular:612). I think that the data i discovered does make sense consdering that the overall percentage difference between the two are only 4%, a relatively very small amount. Although still different, this demonstrates that there is not a major difference in arrests within the two police interaction 'types' </p>
+
+    <p> For future research i would ask the question of - What about bicicyle police interactions? or motorcycle? or even e-bike? I imagine there are a few more police interaction types that could provide us more information about the policing interactions and their arrest percentages. Another question that could be asked is what about vehicular accidents? or intoxicated police interactions? </p>
+
+		<!--The author thinks through possible explanations for the observed phenomenon and explains them clearly. The author ends by asking a question for further study.-->
+
+
+
+	
+
+
+
+</div>
+
+	<script>
+
+const data = {
+            "vehicular": 14.430558830464513, "pedestrian": 17.56120527306968}
+
+
+const colors = Object.keys(data)
+.map(_ => `rgba(${[Math.random() * 255, Math.random() * 255, Math.random() * 255, 0.2].join(', ')})`)
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: Object.keys(data),
+        datasets: [{
+            label: 'probability of arrests per police interaction type',
+            data: Object.values(data),
+            backgroundColor: colors,     
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+
+  options: {
+    animation: {
+    	duration: 1000,
+    	easing: 'easeOutBounce'
+    },
+    legend: {
+      display: true,
+      position: 'bottom',
+      labels: { 
+        fontColor: "#000080",
+      }
+    },
+    scales: {
+      xAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+  }
+});
+
+
+
+
+</script>
+
+</body>
