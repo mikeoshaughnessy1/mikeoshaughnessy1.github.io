@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+  color: #b8cff5: 
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #b8cff5;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #b8cff5;
+  margin-top: 20px;
+}
+
+div.a {
+  text-indent: 50px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1 style="color: #b8cff5">Weekly Assignment 13</h1>
+  <h2 style="color: #8f8f8f">INFO 3402</h2>
+</div>
+
+<div class="topnav">
+  <a href="#"></a>
+  <a href="#"></a>
+  <a href="#"></a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>What is Dogecoin and how is it related to carbon dioxide emissions?</h2>
+      <h5>Casey Paul</h5>
+      <p>In recent years crypto currencies have started to become more common as more types of cryptocurrencies are created. One specifically is Dogecoin, which was created in late 2013. Another thing that has increased over the years is carbon dioxide emissions. Obviously the two are not related, but maybe there is a correlation between the two. Let’s take a look.</p>
+      
+      <p>Before this essay I had only heard of Dogecoin and knew it was some sort of cryptocurrency, but I really had no idea what it actually was. According to this article by <a href="https://www.forbes.com/advisor/investing/what-is-dogecoin/">Forbes</a>, “Software engineers Billy Marcus and Jackson Palmer created Dogecoin in late 2013. Palmer branded the cryptocurrency’s logo using a meme popular at the time that featured the deliberately misspelled word “doge” to describe a Shiba Inu dog.” I remember my freshman year boyfriend thinking that was the funniest meme ever -- it wasn’t. Something that has also increased Dogecoin’s popularity was the recent stock market crisis with r/WallStreetBets, “where enthusiasts had promised to propel its value ‘to the moon’.” The reason behind this is because there is no cap on the number of Docecoins that can be created. Isn't that crazy?</p>
+     <br>
+     
+     <div id="vis01"></div>
+      <script type="text/javascript">
+        var spec = {
+
+           "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": 700,
+            "height": 350,
+            "data": {
+              "url": "https://pkgstore.datahub.io/cryptocurrency/dogecoin/dogecoin_csv/data/492e9a6143d017e8eb08c08ae0006b34/dogecoin_csv.csv"
+            },
+
+            "mark": "line",
+
+            "encoding": {
+              "x": {
+                  "field": "date",
+                  "type": "temporal"
+              },
+              "y": {
+                  "field": "price(USD)",
+                  "type": "quantitative"
+              },
+            },
+          };
+        /* JSON dump of your chart's spec */
+        var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+        vegaEmbed("#vis01", spec, opt);
+      </script>
+
+      <p>Above is a line graph depicting the price of Dogecoin in USD from late 2013 to mid 2018. I wish I could have found a dataset that included 2021 prices because it would have been interesting to see the prices after the stock market crisis, but for now this will do. We can see there is a spike in early 2014 after Dogecoin was first released but it starts to slowly decline in March of that year. The next great spike is in May and June of 2017, however it declines again in August of that year. The biggest spike in prices is in January of 2018. I am not educated enough in this subject to know why, but that was when Dogecoin was at an all time high. Since then it has decreased in price, but still remained higher than it ever has in its existence. </p>
+      <br>
+
+      <div id="vis02"></div>
+      <script type="text/javascript">
+        var spec = {
+
+           "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+            "width": 700,
+            "height": 350,
+            "data": {
+              "url": "https://vega.github.io/vega-datasets/data/co2-concentration.csv"
+            },
+            "encoding": {
+              "x": {
+                  "field": "Date",
+                  "type": "temporal",
+                  "timeUnit": "year",
+              },
+              "y": {
+                  "field": "CO2",
+                  "type": "quantitative"
+              }
+            },
+            "mark": "bar"
+          };
+        /* JSON dump of your chart's spec */
+        var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+        vegaEmbed("#vis02", spec, opt);
+      </script>
+
+      <p>Here we see a bar chart showing the levels of carbon dioxide (CO2) concentration over the years, starting in 1958 and ending in 2020. At first glance it is clear that the concentration of carbon dioxide in our atmosphere is slightly increasing every year, leading to an overall increase in carbon dioxide concentration. While each month the concentration of carbon dioxide may fluctuate, there has not been a single year where the concentration of carbon dioxide has decreased; the average concentration for each year has either stayed constant or increased over time. One thing that surprised me was the bar for 2020 CO2 concentrations. I thought this bar would have been much taller or much lower; I did not think it would follow the trend of a slight increase. It could have been much taller because during COVID, many more factories and delivery trucks have been in production and could have contributed to CO2 concentrations more than ever before. I also think it could have been lower because people were not flying or driving places as much due to the pandemic.</p>
+      
+      <p>Overall we can see that as the prices of Dogecoin increase so does the concentration of  CO2 in our atmosphere. Even though our data does not include the past few years of Dogecoin prices, it is common knowledge that Dogecoin has increased in price recently. Could there be a correlation between the two? Maybe, but probably not. Correlation does not mean causation, and that is clear when comparing two completely different variables. </p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Sources</h2>
+  <p><a href="https://datahub.io/cryptocurrency/dogecoin/r/0.html">Dogecoin Dataset</a></p>
+    <p><a href="https://github.com/vega/vega-datasets/blob/master/data/co2-concentration.csv">CO2 Concentration Data</a></p>
+    <p><a href="https://www.forbes.com/advisor/investing/what-is-dogecoin/">An Introduction to Dogecoin, The Meme Cryptocurrency (Forbes.com)</a></p>
+</div>
+
+</body>
+</html>
